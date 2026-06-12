@@ -1,0 +1,76 @@
+<div class="dvk-header">
+  <span class="dvk-header-brand">
+    DEEP<span class="dvk-red">&amp;</span>VODKA<sup class="dvk-sup">®</sup>
+  </span>
+  <div class="dvk-header-actions">
+    <button (click)="controle_navegacao.navigateForward('/set')" class="dvk-hbtn">Sets</button>
+    <button (click)="controle_navegacao.navigateForward('/sobre')" class="dvk-hbtn">Sobre</button>
+    <button *ngIf="!usuario" (click)="controle_navegacao.navigateForward('/home')" class="dvk-hbtn">Login</button>
+    <button *ngIf="usuario" (click)="logout()" class="dvk-hbtn">Sair</button>
+  </div>
+</div>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="carregarEventos($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="lista_eventos.length === 0 && !carregando" class="dvk-empty ion-text-center ion-padding">
+    <p>Nenhum evento agendado no momento.</p>
+  </div>
+
+  <ion-card *ngFor="let evento of lista_eventos" class="dvk-card" (click)="toggleDetalhes(evento.id)">
+
+    <img *ngIf="evento.banner" [src]="evento.banner"
+         class="dvk-banner" alt="{{ evento.nome }}" />
+
+    <ion-card-header>
+      <ion-card-title class="dvk-title">{{ evento.nome }}</ion-card-title>
+      <ion-card-subtitle class="dvk-subtitle">
+        📅 {{ formatarData(evento.data) }} às {{ formatarHora(evento.hora) }}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="dvk-local">📍 {{ evento.local }}</p>
+
+      <p *ngIf="evento.capacidade" class="dvk-meta">
+        👥 {{ evento.capacidade }} pessoas
+      </p>
+
+      <div *ngIf="expandido.has(evento.id)" class="dvk-detalhes">
+        <p *ngIf="evento.descricao" class="dvk-descricao">{{ evento.descricao }}</p>
+
+        <ion-button
+          *ngIf="evento.link_ingresso"
+          expand="block"
+          color="danger"
+          class="ion-margin-top"
+          [href]="evento.link_ingresso"
+          target="_blank"
+          (click)="$event.stopPropagation()">
+          Comprar Ingresso
+        </ion-button>
+      </div>
+
+      <div class="dvk-footer-card">
+        <span class="dvk-hint-link">
+          {{ expandido.has(evento.id) ? 'fechar' : 'ver detalhes' }}
+        </span>
+
+        <div *ngIf="usuario?.is_staff" class="dvk-admin-actions" (click)="$event.stopPropagation()">
+          <ion-button fill="clear" size="small" class="dvk-btn-editar" (click)="editarEvento(evento)">
+            Editar
+          </ion-button>
+          <ion-button fill="clear" size="small" class="dvk-btn-excluir" (click)="confirmarExclusao(evento)">
+            Excluir
+          </ion-button>
+        </div>
+      </div>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,74 @@
+﻿<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/evento" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card class="dvk-card">
+    <ion-card-header>
+      <ion-card-title class="dvk-title">{{ evento.nome || 'Editar Evento' }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item class="dvk-item">
+        <ion-label position="floating">Nome do Evento *</ion-label>
+        <ion-input [(ngModel)]="evento.nome" type="text" placeholder="Ex: Noite Deep&Vodka"></ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-label position="floating">Data *</ion-label>
+        <ion-input [(ngModel)]="evento.data" type="date"></ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-label position="floating">Horário *</ion-label>
+        <ion-input [(ngModel)]="evento.hora" type="time"></ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-label position="floating">Local *</ion-label>
+        <ion-input [(ngModel)]="evento.local" type="text" placeholder="Ex: Clube XYZ, Araguaína-TO"></ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-label position="floating">Capacidade</ion-label>
+        <ion-input [(ngModel)]="evento.capacidade" type="number" placeholder="Ex: 500"></ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-label position="floating">Link do Ingresso</ion-label>
+        <ion-input [(ngModel)]="evento.link_ingresso" type="url" placeholder="https://..."></ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item dvk-textarea-item">
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-textarea [(ngModel)]="evento.descricao" rows="4" placeholder="Descreva o evento..."></ion-textarea>
+      </ion-item>
+
+      <ion-button
+        expand="block"
+        color="danger"
+        class="ion-margin-top dvk-btn"
+        (click)="salvarEvento()">
+        Salvar Alterações
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        fill="outline"
+        color="light"
+        class="ion-margin-top"
+        (click)="controle_navegacao.navigateBack('/evento')">
+        Cancelar
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

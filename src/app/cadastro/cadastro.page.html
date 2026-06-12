@@ -1,0 +1,68 @@
+﻿<ion-header>
+  <ion-toolbar class="dvk-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Login"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="dvk-toolbar-title">
+      DEEP<span class="dvk-red">&amp;</span>VODKA<sup class="dvk-sup">®</sup>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="dvk-wrapper">
+    <div class="dvk-heading">Criar Conta</div>
+    <div class="dvk-sub">Acesso à área de usuários</div>
+
+    <ion-list lines="full" class="dvk-list">
+      <ion-item class="dvk-item">
+        <ion-input
+          label="Usuário *"
+          labelPlacement="stacked"
+          type="text"
+          [(ngModel)]="instancia.username"
+          placeholder="Escolha um nome de usuário">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-input
+          label="E-mail"
+          labelPlacement="stacked"
+          type="email"
+          [(ngModel)]="instancia.email"
+          placeholder="Opcional">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-input
+          label="Senha *"
+          labelPlacement="stacked"
+          type="password"
+          [(ngModel)]="instancia.password"
+          placeholder="Mínimo 8 caracteres">
+        </ion-input>
+      </ion-item>
+      <p class="dvk-hint">Mínimo 8 caracteres e pelo menos um especial (!@#$%...)</p>
+
+      <ion-item class="dvk-item">
+        <ion-input
+          label="Confirmar Senha *"
+          labelPlacement="stacked"
+          type="password"
+          [(ngModel)]="instancia.confirmar"
+          placeholder="Repita a senha">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" color="danger" class="dvk-btn" (click)="cadastrar()">
+      Criar Conta
+    </ion-button>
+
+    <p class="dvk-link">
+      Já tem conta? <a routerLink="/home">Fazer login</a>
+    </p>
+  </div>
+</ion-content>

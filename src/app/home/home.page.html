@@ -1,20 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="dvk-header">
+  <span class="dvk-header-brand">
+    DEEP<span class="dvk-red">&amp;</span>VODKA<sup class="dvk-sup">®</sup>
+  </span>
+  <div class="dvk-header-actions">
+    <button (click)="controle_navegacao.navigateBack('/evento')" class="dvk-hbtn">Eventos</button>
+  </div>
+</div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="dvk-login-wrapper">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="dvk-login-brand">
+      DEEP<span class="dvk-red">&amp;</span>VODKA<sup>®</sup>
+    </div>
+
+    <ion-list lines="full" class="dvk-list">
+      <ion-item class="dvk-item">
+        <ion-input
+          label="Usuário"
+          labelPlacement="stacked"
+          type="text"
+          [(ngModel)]="instancia.username"
+          placeholder="Digite seu usuário">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="dvk-item">
+        <ion-input
+          label="Senha"
+          labelPlacement="stacked"
+          type="password"
+          [(ngModel)]="instancia.password"
+          placeholder="Digite sua senha">
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" color="danger" class="dvk-btn-entrar" (click)="autenticarUsuario()">
+      Entrar
+    </ion-button>
+
+    <p class="dvk-link-cadastro">
+      Não tem conta? <a routerLink="/cadastro">Criar conta</a>
+    </p>
+
+    <p class="dvk-link-voltar">
+      <a routerLink="/evento">Continuar sem login</a>
+    </p>
+
   </div>
 </ion-content>

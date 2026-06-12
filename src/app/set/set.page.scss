@@ -1,0 +1,149 @@
+.dvk-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #0d0d12;
+  border-bottom: 1px solid #2a2a3a;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 56px;
+}
+
+.dvk-header-brand {
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.dvk-red { color: #cc0033; }
+.dvk-sup { font-size: 0.45em; vertical-align: super; }
+
+.dvk-header-actions { display: flex; gap: 4px; }
+
+.dvk-hbtn {
+  background: transparent;
+  border: none;
+  color: #888899;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+ion-content {
+  --background: #0d0d12;
+  --padding-top: 56px;
+}
+
+.dvk-sets-titulo {
+  color: #555566;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align: center;
+  padding: 20px 0 4px;
+}
+
+.dvk-card {
+  --background: #1c1c26;
+  border-radius: 12px;
+  margin: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.dvk-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #16161e;
+  overflow: hidden;
+}
+
+.dvk-thumb {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.dvk-thumb-placeholder {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dvk-platform {
+  font-size: 2.5rem;
+}
+
+.dvk-thumb-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 3px 8px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 4px;
+}
+
+.dvk-yt  { color: #ff4444; }
+.dvk-sc  { color: #ff7700; }
+
+.dvk-title {
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+.dvk-data {
+  color: #555566;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.dvk-desc {
+  color: #888899;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.dvk-admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #2a2a3a;
+  margin-top: 8px;
+  padding-top: 4px;
+}
+
+.dvk-btn-excluir {
+  --color: #cc0033;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.dvk-empty p {
+  color: #555566;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 60px;
+}

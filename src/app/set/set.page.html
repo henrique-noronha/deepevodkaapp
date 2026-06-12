@@ -1,0 +1,57 @@
+<div class="dvk-header">
+  <span class="dvk-header-brand">
+    DEEP<span class="dvk-red">&amp;</span>VODKA<sup class="dvk-sup">®</sup>
+  </span>
+  <div class="dvk-header-actions">
+    <button (click)="controle_navegacao.navigateBack('/evento')" class="dvk-hbtn">Eventos</button>
+    <button (click)="controle_navegacao.navigateForward('/sobre')" class="dvk-hbtn">Sobre</button>
+    <button *ngIf="!usuario" (click)="controle_navegacao.navigateForward('/home')" class="dvk-hbtn">Login</button>
+    <button *ngIf="usuario" (click)="logout()" class="dvk-hbtn">Sair</button>
+  </div>
+</div>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="carregarSets($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="dvk-sets-titulo">Sets</div>
+
+  <div *ngIf="lista_sets.length === 0 && !carregando" class="dvk-empty ion-text-center ion-padding">
+    <p>Nenhum set disponível no momento.</p>
+  </div>
+
+  <ion-card *ngFor="let set of lista_sets" class="dvk-card" (click)="abrirLink(set.url)">
+
+    <!-- Thumbnail -->
+    <div class="dvk-thumb-wrapper">
+      <img *ngIf="set.thumbnailUrl" [src]="set.thumbnailUrl" class="dvk-thumb" [alt]="set.nome" />
+      <div *ngIf="!set.thumbnailUrl" class="dvk-thumb-placeholder">
+        <span *ngIf="set.tipo === 'youtube'" class="dvk-platform dvk-yt">▶</span>
+        <span *ngIf="set.tipo === 'soundcloud'" class="dvk-platform dvk-sc">☁</span>
+      </div>
+      <div class="dvk-thumb-badge" [class.dvk-yt]="set.tipo === 'youtube'" [class.dvk-sc]="set.tipo === 'soundcloud'">
+        {{ set.tipo === 'youtube' ? 'YouTube' : 'SoundCloud' }}
+      </div>
+    </div>
+
+    <ion-card-header>
+      <ion-card-title class="dvk-title">{{ set.nome }}</ion-card-title>
+      <div *ngIf="set.data" class="dvk-data">{{ formatarData(set.data) }}</div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p *ngIf="set.descricao" class="dvk-desc">{{ set.descricao }}</p>
+
+      <div *ngIf="usuario?.is_staff" class="dvk-admin-actions">
+        <ion-button fill="clear" size="small" class="dvk-btn-excluir"
+          (click)="$event.stopPropagation(); confirmarExclusao(set)">
+          Excluir
+        </ion-button>
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
