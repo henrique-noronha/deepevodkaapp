@@ -123,4 +123,4 @@ ionic cap run android
 ## Projeto Web
 
 O sistema web (Django + backend da API) está em repositório separado:
-[github.com/henrique-noronha/deepevodkaapp](https://github.com/henrique-noronha/deepevodkaapp)
+[github.com/henrique-noronha/deepevodkaapp](https://github.com/henrique-noronha/deepevodka)
